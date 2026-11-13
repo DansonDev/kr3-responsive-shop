@@ -13,6 +13,7 @@
     <script src="js/main.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <header class="site-header">
       <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -28,7 +29,7 @@
               <a class="site-nav__link" href="product.html">Товар</a>
             </li>
             <li class="site-nav__item">
-              <a class="site-nav__link site-nav__link--active" href="order.html"
+              <a class="site-nav__link site-nav__link--active" aria-current="page" href="order.html"
                 >Заявка</a
               >
             </li>
@@ -54,7 +55,7 @@
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main" tabindex="-1">
       <nav class="breadcrumbs" aria-label="Хлебные крошки">
         <a class="breadcrumbs__link" href="index.html">Главная</a>
         <span class="breadcrumbs__current">Заявка</span>
@@ -62,6 +63,10 @@
       <section class="section order-page">
         <h1>Оформление заявки</h1>
         <p>Заполните форму, чтобы оставить заявку на товар.</p>
+        <div class="form-errors" id="form-errors" role="alert" hidden>
+          <p>Исправьте ошибки в полях:</p>
+          <ul id="form-errors-list"></ul>
+        </div>
         <form
           class="order-form"
           id="order-form"
@@ -99,6 +104,7 @@
             <input
               class="order-form__input"
               id="order-phone"
+              aria-describedby="order-phone-hint"
               name="phone"
               type="tel"
               inputmode="tel"
@@ -106,7 +112,7 @@
               pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
               required
             />
-            <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+            <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
           </div>
           <div class="order-form__field">
             <label class="order-form__label" for="order-date">Дата связи</label>
@@ -163,7 +169,7 @@
             </button>
           </div>
         </form>
-        <p class="success-message" id="success-message" hidden>
+        <p class="success-message" id="success-message" role="status" hidden>
           Форма успешно отправлена!
         </p>
       </section>

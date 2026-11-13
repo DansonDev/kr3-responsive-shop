@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <header class="site-header">
       <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -22,7 +23,7 @@
             </li>
             <li class="site-nav__item">
               <a
-                class="site-nav__link site-nav__link--active"
+                class="site-nav__link site-nav__link--active" aria-current="page"
                 href="catalog.html"
                 >Каталог</a
               >
@@ -56,7 +57,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
       <nav class="breadcrumbs" aria-label="Хлебные крошки">
         <a class="breadcrumbs__link" href="index.html">Главная</a>
         <span class="breadcrumbs__current">Каталог</span>
@@ -133,7 +134,7 @@
               <img src="images/product-640.svg"
               srcset="images/product-480.svg 480w, images/product-640.svg 640w, images/product-960.svg 960w"
               sizes="(min-width: 1280px) 180px, (min-width: 1024px) 210px, (min-width: 640px) calc(50vw - 40px), calc(100vw - 64px)"
-              alt="Учебное изображение товара 1" width="640" height="427"
+              alt="Белая упаковка товара 1" width="640" height="427"
               loading="lazy" class="product-card__image">
             <h3 class="product-card__title">Товар 1</h3>
               <p class="product-card__description">

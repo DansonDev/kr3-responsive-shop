@@ -22,32 +22,46 @@ if (closeDialogButton) {
 const orderForm = document.getElementById("order-form");
 const successMessage = document.getElementById("success-message");
 
-orderForm.addEventListener("submit", (event) => {
-  // Отменяем отправку на сервер, так как backend пока нет.
-  event.preventDefault();
+const formErrors = document.getElementById("form-errors");
+const formErrorsList = document.getElementById("form-errors-list");
 
-  const formElements = Array.from(orderForm.elements);
-
-  // Убираем отметки ошибок от прошлой проверки.
-  formElements.forEach((element) => {
-    if (element.willValidate) {
-      element.removeAttribute("aria-invalid");
+// Показываем понятный список ошибок со ссылками на поля.
+function updateFormErrors() {
+  formErrorsList.replaceChildren();
+  Array.from(orderForm.elements).forEach((field) => {
+    if (!field.willValidate) return;
+    field.removeAttribute("aria-invalid");
+    if (!field.validity.valid) {
+      field.setAttribute("aria-invalid", "true");
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = "#" + field.id;
+      link.textContent = field.labels[0].textContent.trim() + ": " + field.validationMessage;
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        field.focus();
+      });
+      item.append(link);
+      formErrorsList.append(item);
     }
   });
+  formErrors.hidden = formErrorsList.children.length === 0;
+  return formErrors.hidden;
+}
 
-  // Проверяем ограничения, указанные в HTML.
-  if (!orderForm.checkValidity()) {
-    formElements.forEach((element) => {
-      if (element.willValidate && !element.checkValidity()) {
-        element.setAttribute("aria-invalid", "true");
-      }
-    });
+// После первой проверки убираем исправленные ошибки при вводе.
+orderForm.addEventListener("input", () => {
+  if (!formErrors.hidden) updateFormErrors();
+});
 
+orderForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  successMessage.hidden = true;
+  if (!updateFormErrors()) {
     orderForm.reportValidity();
     return;
   }
 
-  // Показываем сообщение, очищаем форму и закрываем окно.
   successMessage.hidden = false;
   orderForm.reset();
   if (orderDialog) {
