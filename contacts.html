@@ -10,6 +10,7 @@
     <title>Контакты — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/main.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Перейти к основному содержимому</a>
@@ -78,8 +79,41 @@
 
       <section class="section" id="feedback">
         <h2 class="section__title">Обратная связь</h2>
-        <p>Для отправки заявки перейдите на страницу оформления заявки.</p>
-        <a class="button button--primary" href="order.html">Перейти к форме</a>
+        <p>Заполните форму, чтобы задать вопрос. Обязательные поля отмечены звёздочкой.</p>
+        <div class="form-errors" id="form-errors" role="alert" hidden>
+          <p>Исправьте ошибки в полях:</p>
+          <ul id="form-errors-list"></ul>
+        </div>
+        <form class="order-form" id="order-form" action="#" method="post" novalidate>
+          <div class="order-form__field">
+            <label class="order-form__label" for="contact-name">Имя *</label>
+            <input class="order-form__input" id="contact-name" name="name"
+              type="text" minlength="2" autocomplete="given-name" required>
+          </div>
+          <div class="order-form__field">
+            <label class="order-form__label" for="contact-email">E-mail *</label>
+            <input class="order-form__input" id="contact-email" name="email"
+              type="email" autocomplete="email" required>
+          </div>
+          <div class="order-form__field order-form__field--wide">
+            <label class="order-form__label" for="contact-comment">Вопрос *</label>
+            <textarea class="order-form__textarea" id="contact-comment"
+              name="comment" rows="4" required></textarea>
+          </div>
+          <div class="order-form__field order-form__field--checkbox">
+            <label class="order-form__label" for="contact-agreement">
+              <input class="order-form__input order-form__input--checkbox"
+                id="contact-agreement" name="agreement" type="checkbox" required>
+              Я согласен на обработку данных *
+            </label>
+          </div>
+          <div class="order-form__actions">
+            <button class="button button--primary" type="submit">Отправить вопрос</button>
+          </div>
+        </form>
+        <p class="success-message" id="success-message" role="status" hidden>
+          Сообщение успешно подготовлено! Это учебная форма без отправки на сервер.
+        </p>
       </section>
     </main>
 

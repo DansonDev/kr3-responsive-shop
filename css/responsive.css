@@ -220,3 +220,33 @@ main {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* На телефоне характеристики читаются без прокрутки вбок. */
+.product-specs__row {
+  margin-bottom: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.product-specs dt {
+  font-weight: 700;
+}
+
+.product-specs dd {
+  margin: 4px 0 0;
+}
+
+.table-wrapper {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .product-specs {
+    display: none;
+  }
+
+  .table-wrapper {
+    display: block;
+  }
+}
