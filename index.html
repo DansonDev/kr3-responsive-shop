@@ -9,6 +9,7 @@
     />
     <title>Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <script src="js/main.js" defer></script>
   </head>
 
@@ -58,13 +59,21 @@
     <main>
       <!-- Основное содержимое страницы -->
       <section class="hero">
-        <h1>Учебный интернет-магазин</h1>
+        <div class="hero__content">
+        <h1 class="hero__title">Учебный интернет-магазин</h1>
         <p>
           Это стартовая страница учебного frontend-проекта. В дальнейшем на её
           основе будет разработан многостраничный сайт интернет-магазина или
           каталога услуг.
         </p>
         <a class="button button--primary" href="#popular">Перейти к товарам</a>
+        </div>
+        <picture>
+          <source media="(min-width: 1200px)" srcset="images/product-960.svg">
+          <source media="(min-width: 768px)" srcset="images/product-640.svg">
+          <img src="images/product-480.svg" alt="Каталог учебных товаров"
+            width="480" height="320" class="hero__image">
+        </picture>
       </section>
 
       <section class="section" id="advantages">
@@ -84,6 +93,11 @@
         <div class="products-grid">
           <article class="product-card product-card--featured">
             <span class="product-card__badge">Хит</span>
+            <img src="images/product-640.svg"
+              srcset="images/product-480.svg 480w, images/product-640.svg 640w, images/product-960.svg 960w"
+              sizes="(min-width: 1280px) 260px, (min-width: 1024px) 340px, (min-width: 640px) calc(50vw - 40px), calc(100vw - 64px)"
+              alt="Учебное изображение товара 1" width="640" height="427"
+              loading="lazy" class="product-card__image">
             <h3 class="product-card__title">Товар 1</h3>
             <p class="product-card__description">
               Краткое описание учебного товара.
@@ -230,7 +244,7 @@
           </select>
         </div>
 
-        <div class="order-form__field">
+        <div class="order-form__field order-form__field--wide">
           <label class="order-form__label" for="order-comment"
             >Комментарий</label
           >

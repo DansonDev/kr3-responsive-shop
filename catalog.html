@@ -9,6 +9,7 @@
     />
     <title>Каталог товаров — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
   </head>
   <body>
     <header class="site-header">
@@ -129,7 +130,12 @@
           <div class="products-grid">
             <article class="product-card product-card--featured">
               <span class="product-card__badge">Хит</span>
-              <h3 class="product-card__title">Товар 1</h3>
+              <img src="images/product-640.svg"
+              srcset="images/product-480.svg 480w, images/product-640.svg 640w, images/product-960.svg 960w"
+              sizes="(min-width: 1280px) 180px, (min-width: 1024px) 210px, (min-width: 640px) calc(50vw - 40px), calc(100vw - 64px)"
+              alt="Учебное изображение товара 1" width="640" height="427"
+              loading="lazy" class="product-card__image">
+            <h3 class="product-card__title">Товар 1</h3>
               <p class="product-card__description">
                 Краткое описание учебного товара.
               </p>
