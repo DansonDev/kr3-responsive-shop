@@ -76,11 +76,7 @@ HTML-отчёты сохранены в `lighthouse/`. Автоматическ�
 
 ## Сдача КР №3
 
-В СДО сдаётся ссылка на репозиторий: https://github.com/DansonDev/kr3-responsive-shop
-
 Опубликованный сайт: https://dansondev.github.io/kr3-responsive-shop/
-
-Получена постановка КР №4: отдельный репозиторий `kr4-js-shop`, чистый JavaScript, DOM, события, формы, каталог и корзина с localStorage. Реализация КР №4 начинается на следующих занятиях.
 
 ## Структура проекта
 
