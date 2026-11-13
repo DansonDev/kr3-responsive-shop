@@ -14,13 +14,14 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <header class="site-header">
       <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
         <nav class="site-nav" aria-label="Основная навигация">
           <ul class="site-nav__list">
             <li class="site-nav__item">
-              <a class="site-nav__link site-nav__link--active" href="index.html"
+              <a class="site-nav__link site-nav__link--active" aria-current="page" href="index.html"
                 >Главная</a
               >
             </li>
@@ -56,7 +57,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
       <!-- Основное содержимое страницы -->
       <section class="hero">
         <div class="hero__content">
@@ -71,7 +72,7 @@
         <picture>
           <source media="(min-width: 1200px)" srcset="images/product-960.svg">
           <source media="(min-width: 768px)" srcset="images/product-640.svg">
-          <img src="images/product-480.svg" alt="Каталог учебных товаров"
+          <img src="images/product-480.svg" alt="Белая упаковка учебного товара"
             width="480" height="320" class="hero__image">
         </picture>
       </section>
@@ -96,7 +97,7 @@
             <img src="images/product-640.svg"
               srcset="images/product-480.svg 480w, images/product-640.svg 640w, images/product-960.svg 960w"
               sizes="(min-width: 1280px) 260px, (min-width: 1024px) 340px, (min-width: 640px) calc(50vw - 40px), calc(100vw - 64px)"
-              alt="Учебное изображение товара 1" width="640" height="427"
+              alt="Белая упаковка товара 1" width="640" height="427"
               loading="lazy" class="product-card__image">
             <h3 class="product-card__title">Товар 1</h3>
             <p class="product-card__description">
@@ -168,7 +169,11 @@
         Оформление заявки
       </h2>
 
-      <form
+      <div class="form-errors" id="form-errors" role="alert" hidden>
+          <p>Исправьте ошибки в полях:</p>
+          <ul id="form-errors-list"></ul>
+        </div>
+        <form
         class="order-form"
         id="order-form"
         action="#"
@@ -209,6 +214,7 @@
           <input
             class="order-form__input"
             id="order-phone"
+              aria-describedby="order-phone-hint"
             name="phone"
             type="tel"
             inputmode="tel"
@@ -216,7 +222,7 @@
             pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
             required
           />
-          <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+          <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
         </div>
 
         <div class="order-form__field">
@@ -285,7 +291,7 @@
       </form>
     </dialog>
 
-    <p class="success-message" id="success-message" hidden>
+    <p class="success-message" id="success-message" role="status" hidden>
       Форма успешно отправлена!
     </p>
   </body>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <header class="site-header">
       <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -25,7 +26,7 @@
             </li>
             <li class="site-nav__item">
               <a
-                class="site-nav__link site-nav__link--active"
+                class="site-nav__link site-nav__link--active" aria-current="page"
                 href="product.html"
                 >Товар</a
               >
@@ -55,7 +56,7 @@
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main" tabindex="-1">
       <nav class="breadcrumbs" aria-label="Хлебные крошки">
         <a class="breadcrumbs__link" href="index.html">Главная</a>
         <span class="breadcrumbs__current">Товар 1</span>
@@ -65,15 +66,15 @@
         <img
           class="product-details__image"
           src="images/product.svg"
-          alt="Учебное изображение товара 1"
+          alt="Белая упаковка товара 1"
           width="600"
           height="400"
         />
         <p>Краткое описание учебного товара.</p>
         <p class="product-details__price">Цена: 1000 руб.</p>
-        <div class="table-wrapper">
+        <div class="table-wrapper" role="region" aria-labelledby="product-table-caption" tabindex="0">
         <table class="product-table">
-          <caption class="product-table__caption">
+          <caption class="product-table__caption" id="product-table-caption">
             Характеристики товара
           </caption>
           <thead>
@@ -84,15 +85,15 @@
           </thead>
           <tbody>
             <tr>
-              <td class="product-table__cell">Категория</td>
+              <th class="product-table__cell" scope="row">Категория</th>
               <td class="product-table__cell">Учебный товар</td>
             </tr>
             <tr>
-              <td class="product-table__cell">Цена</td>
+              <th class="product-table__cell" scope="row">Цена</th>
               <td class="product-table__cell">1000 руб.</td>
             </tr>
             <tr>
-              <td class="product-table__cell">Наличие</td>
+              <th class="product-table__cell" scope="row">Наличие</th>
               <td class="product-table__cell">В наличии</td>
             </tr>
           </tbody>
